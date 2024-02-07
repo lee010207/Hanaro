@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>객체배열/람다 사용하기</h1>
+</body>
+
+</html>
+<script>
+    let scores = [
+        { "id": 1, "name": "김성훈", "kor": 90, "eng": 80, "mat": 60 },
+        { "id": 2, "name": "이민호", "kor": 100, "eng": 100, "mat": 95 },
+        { "id": 3, "name": "김경하", "kor": 80, "eng": 80, "mat": 60 },
+        { "id": 4, "name": "전미화", "kor": 70, "eng": 90, "mat": 60 },
+        { "id": 5, "name": "김정하", "kor": 80, "eng": 70, "mat": 80 },
+        { "id": 6, "name": "강수지", "kor": 60, "eng": 50, "mat": 30 },
+        { "id": 7, "name": "한승원", "kor": 50, "eng": 50, "mat": 40 },
+        { "id": 8, "name": "홍정훈", "kor": 90, "eng": 70, "mat": 60 },
+        { "id": 9, "name": "백운용", "kor": 95, "eng": 80, "mat": 70 },
+        { "id": 10, "name": "최주용", "kor": 90, "eng": 90, "mat": 90 }
+    ];
+    //문제1. : 총점(total), 평균(avg) 구하기 - forEach
+
+    scores.forEach((e) => {
+        e["total"] = e.kor + e.eng + e.mat;
+        e["avg"] = e.total / 3;
+    });
+    console.log(scores);
+    // let avg = total.forEach( (e)=> e.avg());
+    // console.log(total, avg);
+
+    //문제2. : 국어 성적이 80점 이상인 학생의 숫자
+
+    console.log(scores.filter((per) => per.kor >= 80).length);
+
+    //문제3. : 평균이 80점 이상인 학생 리스트
+
+    console.log(scores.filter((per) => per.avg >= 80));
+
+    // 문제 4 : 총점 순으로 내림차순 정렬(원본 데이터는 그대로)
+
+    // 오름차순 -> scores.toSorted((item1, item2) => item1.total - item2.total);
+    s1 = scores.toSorted((item1, item2) => item2.total - item1.total);
+    console.log(s1);
+
+    // 문제5 : 이름에 '정'이 들어가는 사람만 성적순으로 내림차순 정렬
+    // sort -> 원본 데이터를 수정함(정렬함) / toSorted -> 원본은 그대로 새로운 정렬된 배열을 생성
+    s1 = scores.filter((e) => e.name.includes("정"));
+    s1.sort((item1, item2) => item2.avg - item1.avg);
+    console.log(s1);
+
+    // 문제6 : ['홍정훈', '김정하', '이민호'] 세명 정보 출력
+
+    // 내 코드
+    arr = ['홍정훈', '김정하', '이민호', "한승원", "김가미"];
+    scores.forEach((e) => {
+        for (i = 0; i < arr.length; i++) {
+            if (e.name == arr[i]) {
+                console.log(e);
+            }
+        }
+    });
+
+    // 답안 코드
+    let result = scores.filter((ob)=> {
+         return arr.find((key)=> key == ob.name) != undefined;
+         // 조건에 부합하는 첫번째 객체 반환
+         // 없으면 undefined
+         });
+
+    console.log(result);
+</script>

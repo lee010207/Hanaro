@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <div><h1>hello</h1></div>
+    <input type="text" name="" id="input" value="<h1>hello</h1>">
+    
+    <button id="btnAllSelect">전체선택</button>
+    <button id="btnAllRelease">전체해제</button>
+</body>
+</html>
+<script>
+    console.log($("div").text());
+    console.log($("div").html());
+    console.log($("#input").val());
+
+    $("div").html("<h3 style='color: blueviolet;'>yeah</h3>");
+    $(()=>{
+        $("#btnAllSelect").click(()=>{
+            event.preventDefault();
+    $("input[tyep=checkbox][name=language]").prop("checked", true);
+});
+    $("#btnAllRelease").click(()=>{
+        event.preventDefault();
+        $("input[type=checkbox][name=lanuage]").prop("checked", false);
+    })
+
+})
+</script>

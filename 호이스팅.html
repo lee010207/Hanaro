@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        a= 100;
+        console.log('a=', a);
+        // 결과 : a= 100
+
+        var a;
+        console.log('a=', a);
+        // 아까와 동일한 100이 출력 , 여기서 새로 만들지 않고 이미 만들어진 a를 참조함
+        
+        // 결과 : a= 100
+
+        var msg = "HELLO";
+        if(true){
+            var msg = "Nice to meet you";
+        }
+        console.log(msg);
+        // 결과 : Nice to meet you
+    </script>
+</body>
+</html>

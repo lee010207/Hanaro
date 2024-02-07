@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        setTimeout(함수, 시간) : 이 시간이 지나고 난 뒤에 함수를 한번맘ㄴ 호출
+        시간 : 밀리초 1000-1초, 밀리초
+        (파이썬 : 1초)
+        
+        setInterval(함수주소, 시간) : 시간마다 호출, 반환값을 받아서 처리해야 함
+                                     반환값을 받아서 정지시키는데 사용
+                                     전역변수랑 묶어서 사용함
+        
+        * 특정 버튼을 누르면 시작하고 - 함수 - 이벤트 핸들러 - 구조 변경을 함부로 하면 안됨
+        let timer = setInterval(함수, 시간);
+        함수 내에서만 존재 -> 이 함수가 종료하면 timer1에 저장해놓은 interval객체는 참조를 잃어버림
+        
+       * 특정 버튼을 누르면 종료하고 - 함수
+    -->
+
+<h1 style="color: aquamarine;"></h1>
+
+<button type="button" id="btnStart">START</button>
+<button type="button" id="btnEnd">END</button>
+</body>
+</html>
+<script>
+    let timer1 = null;
+    // 변수를 직접 초기화하고자 할 때 null값으로 하자
+    window.onload = ()=>{
+        document.getElementById("btnStart").addEventListener("click",()=>{
+            timer1 = setInterval(()=>{
+                let today = new Date();
+                // 객체 생성 시 오늘 날짜와 시간이 내부에 저장
+                today = today.toLocaleTimeString();
+                // 현재 시간만 가져옴
+                document.querySelector("h1").innerHTML = today;
+            },1000);
+        });
+
+        document.getElementById("btnEnd").addEventListener("click", ()=>{
+            if(timer1 != null){
+                clearInterval(timer1);
+                timer1 = null;
+            }
+        });
+    }
+</script>

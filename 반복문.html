@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /* for문 : 반복 횟수를 아는 경우
+       while문 : 특정 조건을 만족하는 동안 반복, 때로는 한번도 수행이 안될 수 가 있어서 파일을 읽거나 DB 읽을 때 많이 썼음
+       foreach : 주로 많이 사용 */
+
+       let i , result;
+       result = 0;
+       for(i=1; i<=10; i++){
+        result+=i;
+       }
+       console.log(result);
+
+       i=1;
+       result =0;
+       while(i<=10){
+        result += i;
+        i++;
+       }
+       console.log(result);
+
+       // 배열이 있을 때
+       let flowers = ["작약", "국화", "장미", "백합", "수선화", "튤립", "코스모스", "안개꽃"];
+
+       console.log(flowers[3]);
+
+       for(i=0; i<flowers.length; i++)
+            console.log(i, flowers[i]);
+
+       console.log("--in 연산자");
+       for(i in flowers)  // in 연산자는 배열의 index를 가져옴
+            console.log(i, flowers[i]);
+        
+        console.log("--of 연산자--");
+        i =0;
+        for(item of flowers)
+            console.log(i++, item);
+
+        // 람다식
+        // foreach 함수에 배열 객체가 추가
+        // 배열의 요소 하나하나마다 함수를 호출해줌
+        // 함수를 개발자가 만들지만 호줄자는 시스템
+        // forEach구문에 전달해야 할 함수는 두개의 매개변수 배열의 요소, 인덱스가 있어야 함
+        // 반환값이 없는 함수를 전달해줘야 함
+        // 함수형 언어들의 기본문법
+        // 임시로 쓰고 버리는 함수 -> 메로리 운영에 유연허믈 ㅜ= 줌
+        flowers.forEach((item, index)=>{
+
+            console.log(index, item);
+        });
+       
+</script>

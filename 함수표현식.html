@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="goCall()">이벤트핸들러</button>
+    <button type="button" id="btnPress">아이디이벤트</button>
+</body>
+</html>
+<script>
+    // window.onload = 함수를 전달, html문서가 모두 메모리로 로딩된 후
+    //                 여기에 전달된 함수를 호출함
+    window.onload = function(){
+        var btnPress = document.getElementById("btnPress");
+        // 버튼 객체 주소 저장
+        btnPress.addEventListener("click", function(){
+            alert("이벤트실행!");
+        });
+        // 함수의 매개변수로 함수를 전달할 수 있음
+
+        btnPress.addEventListener("click", )
+    }
+    function goCall(){
+        alert("온클릭 이벤트 실행!");
+    }
+</script>

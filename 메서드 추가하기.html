@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>객체에 메서드 추가하기</h1>
+    <p>json 객체 저장방식이 키와 값형태로 저장하는데 값에 함수주소도 저장이 가능함</p>
+    <p>멤버 키에 접근 -> this 사용</p>
+</body>
+</html>
+<script>
+    let persons = {
+        name:"Mimi",
+        age:23,
+        phone:"010-2029-2939",
+        setValue:function(name="", age=0, phone=""){
+            this.name = name;
+            this.age =age;
+            this.phone = phone;
+        },
+        display:function(){
+            console.log(this.name, this.age, this.phone);
+        },
+        // getname:()=>{
+        //     console.log(name);  -> name이 뭘 가르키는지를 몰라서 아무 값도 출력이 안됨
+        // }
+        line:()=>{
+            console.log("단순 콘솔창 출력은 가능합니다");
+        }
+    };
+
+    persons.display();
+    persons.setValue('Lili', 37, "010-3747-2837");
+    persons.display();
+    persons.line();
+    //persons.getname();
+
+    // 상속
+    let students = {__proto__:persons, "kor":90, "eng":70, "mat":80};
+    students.display();
+    console.log(students);
+    console.log(students.kor, students.eng, students.mat);
+</script>

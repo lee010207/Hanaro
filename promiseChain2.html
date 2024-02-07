@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    new Promise((resolve, reject)=>{
+        //setTimeout(함수주소, 시간-밀리초) 밀리초가 지나면 함수를 딱 한번만 호출함
+        setTimeout(()=>{
+            resolve({"name":"Mimi", age:38})
+        }, 2000);
+    })
+    .then((result)=>{
+        console.log("result", result);
+        // json객체 합치기, 배열일때도 사용
+        return result.phone="010-2837-2837";
+        // 이 값이 그 다음 then에서 호출할 함수의 매개변수로 전달됨
+
+    })
+    .then((result)=>{
+        console.log("result", result);
+        return result.address = "서울시 송파구";
+        
+    })
+    .then((result)=>{
+        console.log("result", result);
+    })
+
+    // error 상황이 발생할 경우가 없어서 catch를 안 씀
+</script>

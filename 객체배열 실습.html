@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="nums" placeholder="숫자를 입력하세요">
+        <button id="sortNum">정렬</button>
+    </div>
+    <fieldset>
+        <legend> 오름차순 정렬</legend>
+        <table>
+            <tr id="sorted"></tr>
+        </table>
+    </fieldset>
+    
+</body>
+</html>
+<script>
+    
+    function sortNum(nums){
+        var arr = nums.split(",");
+        var sorted = document.getElementById("sorted");
+        var html = "";
+        console.log(arr);
+        arr.sort((item1, item2)=> item1 - item2);
+        arr.forEach((e)=>{
+            html += "<td>";
+            html += e;
+            html += "</td>";
+        });
+        sorted.innerHTML = html;
+    }
+
+    window.onload = function(){
+        var btn = document.getElementById("sortNum");
+        var nums = document.getElementById("nums");
+        console.log(nums.value);
+        // 바로 함수를 쓰면 바로 실행됨! 그래서 function(){
+        //    실행시키고 싶은 함수();
+        // }; 이렇게 해야 클릭했을 때 실행시키고 싶은 함수가 실행됨
+        btn.addEventListener("click", function(){
+            sortNum(nums.value)});
+    };
+    
+/* 
+버튼에 onclick 이벤트 직접 주기
+    <button type="button" onclick="sortNum()">정렬</button>
+
+    
+    function sortNum(){
+        var nums = document.getElementById("nums").value;
+        console.log(nums);
+        var arr = nums.split(",");
+        var sorted = document.getElementById("sorted");
+        var html = "";
+        console.log(arr);
+        arr.sort((item1, item2)=> item1 - item2);
+        arr.forEach((e)=>{
+            html += "<td>";
+            html += e;
+            html += "</td>";
+        });
+        sorted.innerHTML = html;
+    }
+*/
+
+
+/*
+window.onload = function(){
+    let btnSort = document.getElementById("btnSort");
+    btnSort.addEventListener("click", ()=>{
+        let input = document.getElementById("input").value;
+        let temps = input.split(",");
+        temps = temps.map((item)=>parseInt(item));   //형변환도 알아서 해줌
+        let result = temps.sort( (a,b)=> a-b);
+        // result = result.join(" ");   이거 안써도 알아서 해줌
+        document.getElementById("result").innerHTML = result;
+    })
+}
+
+*/
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fetch로 데이터 가져오기</h1>
+    <div id="result" style="border: 1px solid; width:430px; height: 430px;">
+        <!-- 비동기로 데이터가 뿌려질 공간 -->
+    </div>
+    <button type="button" id="btnSend">호출</button>
+</body>
+</html>
+<script>
+    document.querySelector("#btnSend").addEventListener("click", ()=>{
+       
+        fetch("http://127.0.0.1:8080/getUserInfo")
+       .then((res)=>{
+        console.log(res);
+       })
+       .then((data)=>{
+        // 데이터를 어떤 형태로 받아오는지 확인하기
+        console.log(typeof(data))
+        // -> Object : 얘가 알아서 JSON객체로 파싱해줌
+       })
+       .catch((err)=>{
+        console.log(err);
+       });
+    });
+
+    //Fetch 함수가 주는 결과 : Promise 객체
+    // Promise가 일을 종료할 때까지 기다림(then구문)
+</script>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="title">제목1</h1>
+    <h1 class="title">제목2</h1>
+    <h1 class="title">제목3</h1>
+    <h1 class="title">제목4</h1>
+    <h1 class="title">제목5</h1>
+</body>
+</html>
+<script>
+    let titles = document.getElementsByClassName("title");
+    titles[0].innerHTML = "클래스로 접근해서 제목바꾸기1";
+    titles[1].innerHTML = "클래스로 접근해서 제목바꾸기2";
+    titles[2].innerHTML = "클래스로 접근해서 제목바꾸기3";
+    titles[3].innerHTML = "클래스로 접근해서 제목바꾸기4";
+    titles[4].innerHTML = "클래스로 접근해서 제목바꾸기5";
+
+    titles = document.querySelectorAll(".title");
+    titles.forEach(e=>{
+        console.log(e.innerHTML)
+    })
+
+    // 태그 자체에 접근해 작업
+    // 자바스크립크에서는 카멜 표기법으로 바뀜
+    // css에서는 스네이크 표기법 (ex) background-color
+    document.getElementsByTagName("body")[0].style.backgroundColor = "#dddd99";
+</script>

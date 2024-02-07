@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function say(name){
+            console.log(name);
+        }
+
+        //힘수 호출
+        say('Joy');
+        say('John');
+        say('Jini');
+
+        // 오버로딩 X : 함수 이름은 같은데 형태가 다른 함수가 존재
+        // js에서는 하나의 파일에 하나의 함수명만 존재
+        // 매개변수에 기본값을 부여할 수 있음
+        // 값을 지정해주지 않으면 기본값으로 대체됨
+        // 오버로딩과 비슷한 효과를 가짐
+        function myfunc(a=1, b=2, c=3){
+            console.log(`a=${a+1} b=${b+2} c=${c+3}`);
+            return a+b+c;
+        }
+        console.log(myfunc());
+
+        // ||연산자
+        function showing(msg){
+            //매개변수에 값을 안주면 -> undefined가 저장됨
+            msg = msg || "빈문자열";
+            console.log("msg = ", msg);
+        }
+        showing();
+        showing("안녕하세여");
+
+        // ??연산자
+        function getCount(count){
+            count = count ?? "No count";
+            return count;
+        }
+
+        console.log(getCount(5));
+        console.log(getCount(null));
+        console.log(getCount());
+        console.log(getCount(""));
+        // 자동으로 0 또는 형변환을 해서 처리함
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="game()">게임시작</button>
+    
+    <button type="button" onclick="result(1)" id="scissor">가위</button>
+    <button type="button" onclick="result(2)" id="rock">바위</button>
+    <button type="button" onclick="result(3)" id="paper">보</button>
+
+    <div id="res">
+    </div>
+</body>
+</html>
+<script>
+    let com = 0;
+    function game(){
+        rand = Math.ceil(Math.random()*3);
+        console.log(rand);
+        com = rand;
+        return rand;
+    }
+
+    function result(me){
+        // 가위 : 1 / 바위 : 2 / 보 : 3
+        let res = document.getElementById("res");
+        if(me == 1){
+            if(com == 2){
+                res.innerHTML = "가위(나) vs 바위 : LOSE";
+            }else if(com == 1){
+                res.innerHTML = "비김";
+            }else{
+                res.innerHTML = "가위(나) vs 보 : WIN";
+            }
+        }else if(me == 2){
+            if(com == 1){
+                res.innerHTML = "바위(나) vs 가위 : WIN";
+            }else if(com == 2){
+                res.innerHTML = "비김";
+            }else{
+                res.innerHTML = "바위(나) vs 보 : LOSE";
+            }
+        }else{
+            if(com == 1){
+                res.innerHTML = "보(나) vs 가위 : LOSE";
+            }else if(com == 3){
+                res.innerHTML = "비김";
+            }else{
+                res.innerHTML = "보(나) vs 바위 : WIN";
+            }
+        }
+    }
+
+</script>
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>가위바위보게임</h1>
+        <button type="button" id="btnGame1" style="width:120px">가위</button>&nbsp;
+        <button type="button" id="btnGame2" style="width:120px">바위</button>&nbsp;
+        <button type="button" id="btnGame3" style="width:120px">보</button>&nbsp;
+        <br/>
+        <div id="result"></div>  <br/>
+    </div>
+</body>
+</html>
+<script>
+    window.onload = function(){
+        for(let i=1; i<=3; i++)
+            document.getElementById("btnGame"+i).addEventListener("click", ()=>{
+                gameStart(i);
+            })
+    }
+    function gameStart(person)
+    {
+        console.log( person );
+        computer = Math.ceil(Math.random()*3);
+        winner = getWinner(computer, person);
+        let winners = ["", "무승부", "컴퓨터승", "사람승"];
+        let titles = ["", "가위", "바위", "보"];
+        let msg =
+            `컴퓨터 : ${titles[computer]}
+            사람:${titles[person]}
+            승부:${winners[winner]} `;
+        alert(msg);
+    }
+    function getWinner(computer, person){
+        let winner=1;
+        if (computer == person) //무승부
+            winner = 1; //무승부 상황
+        else if(computer == 1 && person==2 )//가위  바위
+            winner = 2;  //컴퓨터 승
+        else if(computer == 1 && person==3 )
+            winner = 3; //사람승
+        else if(computer == 2 && person==1 )
+            winner = 2 //컴퓨터승
+        else if(computer == 2 && person==3 )
+            winner = 3 //사람승
+        else if(computer == 3 && person==1 )
+            winner = 3 //사람승
+        else if(computer == 3 && person==2 )
+            winner = 2 //컴푸터승
+        return winner;
+    }
+</script>
+
+-->

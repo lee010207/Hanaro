@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>주급계산기</legend>
+        <label for="name">이름</label>
+        <input type="text" id="name"> </br>
+        <label for="per_pay">시간당 급여액</label>
+        <input type="text" id="per_pay"> </br>
+        <label for="worktime">근무시간</label>
+        <input type="text" id="worktime"> </br>
+
+        <button type="button" id="btnCal">계산</button>
+    </br>
+    <div id="result"></div>
+    </fieldset>
+</body>
+</html>
+<script>
+    document.getElementById("btnCal").addEventListener("click", ()=>{
+        let per_pay = document.getElementById("per_pay").value;
+        let worktime = document.getElementById("worktime").value;
+        let name = document.getElementById("name").value;
+        
+        axios.post("http://127.0.0.1:8080/Pay",
+        {"per_pay":per_pay, "worktime":worktime})
+        .then((res)=>{
+            
+            document.getElementById("result").innerHTML = `${name}님의 주급은 ${res.data.pay}원 입니다.`;
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+    });
+</script>

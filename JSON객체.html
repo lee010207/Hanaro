@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let useInfo = {"name":"Mimi", 'age':"14", address:"서울시 송파구"};
+    // 키값은 "", '', 없어도 됨
+
+    console.log(useInfo.name);
+    console.log(useInfo.age);
+    console.log(useInfo.address);
+    console.log(useInfo.phone);  // undefined
+    // 변수명에는 -을 쓸 수 없음 : console.log(useInfo.user-phone); -> error
+
+    console.log(useInfo["name"]);
+    console.log(useInfo["age"]);
+    console.log(useInfo["address"]);
+    console.log(useInfo["phone"]);
+
+    let useInfo2 = '{"name":"Mimi", "age":"14", "address":"서울시 송파구"}';
+    console.log(useInfo); // Object
+    console.log(useInfo2); //String
+
+    //String -> Object로 전환시켜줌
+    // JSON.parse <=> JSON.stringfy
+
+    useInfo3 = JSON.parse(useInfo2);
+    console.log(useInfo3);  // String
+
+    //json 요소추가
+    useInfo3["job"] = "프로그래머";
+    console.log(useInfo3);
+
+    useInfo3["display"] = function(){
+        // 객체에 추가된 함수에서 객체 요소를 접근하고 싶으면 반드시 this 사용!
+        // 화살표 함수 사용X(this가 안됨)
+        console.log("자기소개");
+        console.log("이름 : ", this.name);
+        console.log("나이 : ", this.age);
+        console.log("주소 : ", this.address);
+        console.log("직업 : ", this.job);
+    }
+
+    useInfo3.display();
+</script>

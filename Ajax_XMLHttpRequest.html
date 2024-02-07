@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX로 데이터 가져오기</h1>
+    <div id="result" style="border: 1px solid; width:430px; height: 430px;">
+        <!-- 비동기로 데이터가 뿌려질 공간 -->
+    </div>
+    <button type="button" id="btnSend">호출</button>
+</body>
+</html>
+<script>
+    document.querySelector("#btnSend").addEventListener("click", ()=>{
+        let xmlhttp = new XMLHttpRequest();
+        // 통신을 담당하는 객체
+        // onreadystatechange : 어떤 상태이든 서버로부터 수신이 되면 onreadystatechange에 전달된 함수를 호출
+
+        xmlhttp.onreadystatechange = function(){
+            console.log(this.readyState, this.status, this.statusText);
+            if(this.readyState==4 && this.status == 200){
+
+                //JSON형태의 문자열을 -> JSON객체로 바꿈
+                let userInfo = JSON.parse(xmlhttp.responseText);
+                document.querySelector("#result").innerHTML = userInfo.name + "\n" +
+                userInfo.phone + "\n" + userInfo.address;
+            }
+        }
+        xmlhttp.open("GET", "http://127.0.0.1:8080/getUserInfo");
+        xmlhttp.send();
+    });
+</script>

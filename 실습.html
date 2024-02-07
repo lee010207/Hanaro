@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numbers = [10,2,3,6,8,9,21,20,4,25,33];
+        let even = numbers.filter((item)=> item%2 == 0);
+        let odd = numbers.filter((item)=> item%2 ==1);
+
+        let words = ['school', 'hospital', 'desk', 'chair', 'language',
+                    'house', 'programming', 'survey', 'assembly', 'compiler',
+                    'interpreter' ];
+       
+        let res1 = words.filter((item)=>item.length >= 5);
+      
+        let res2 = words.filter((item)=> item.indexOf('h')==0);
+       
+        let res3 = words.filter((item)=>item.includes('r'));
+
+        console.log(`짝수 : ${even} , 홀수 : ${odd}`);
+        console.log(`5글자 이상 : ${res1}
+h로 시작 : ${res2}
+r 포함: ${res3}`);
+    </script>
+</body>
+</html>

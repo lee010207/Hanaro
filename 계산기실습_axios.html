@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="x" placeholder="x">
+    <input type="text" id="y" placeholder="y">
+
+    <button type="button" id="btnCal">계산</button>
+</body>
+</html>
+<script>
+    $("#btnCal").click(()=>{
+        let x = $("#x").val();
+        let y = $("#y").val();
+        //console.log(x,y);
+
+        let url=`http://127.0.0.1:8080/add/${x}/${y}`;
+        axios.get(url)
+        .then((res)=>{
+            console.log(res.data);
+            document.querySelector("#result").innerHTML = res.data.result;
+        }).catch((msg)=>{
+            console.log(msg);
+        });
+
+    });
+</script>

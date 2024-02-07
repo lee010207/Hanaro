@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        화살표 함수가 함수의 매개변수로 전달되거나, 이벤트 핸들러일 경우에는 매개변수나 이벤트 핸들러 저장하는 변수에 저장됨
+    -->
+    <h1 id="h"></h1>
+</body>
+</html>
+<script>
+    function fAdd(x,y){
+        return x+y;
+    }
+
+    let add = (x,y) => x+y;
+    console.log(fAdd(3,6), add(51,26));
+
+    // 윤년 확인 실습
+    // 연도를 입력받아 윤년이면 true / 아니면 false
+
+    function fIsleap(year){
+        // if((year%4 == 0 && year%100 != 0) || year % 400 == 0){
+        //     return true;
+        // }
+        // return false;
+        return (year%4 == 0 && year%100 != 0) || year % 400 == 0;
+    }
+    console.log(fIsleap(2024));
+
+    let isleap = (year) => (year%4 ==0 && year%100 != 0) || year%400 == 0;
+    console.log(`화살표함수윤년 : ${isleap(2024)}`);
+
+    let sigma = (limit=10)=>{
+        s=0;
+        for(i=1; i<=limit; i++){
+            s+=i;
+        }
+        return s;
+    }
+    console.log(sigma(10));
+
+    s1 = "7,8,9,11,12,30,25,68,13,54,91"; //문자열로 전달
+    // 배열로 변환
+    s2 = s1.split(",");
+    // 문자열을 특정기호를 중심으로 나눠서 문자배열을 리턴하는 함수
+    console.log(s2);
+
+    // <-> join : 배열을 합쳐서 문자열로 리턴
+    s3 = s2.join(" ");
+    console.log(s3);
+
+    // 형변환
+    for(i=0; i<s2.length; i++){
+        s2[i] = parseInt(s2[i]);
+    }
+
+    // map : 매개변수가 배열의 요소, 인덱스, 반환값이 하나 존재해야 함(연산이 수행된)
+    // s2.map(item => parseInt(item));
+    // -> 새로운 배열로 리턴하기 때문에 s2는 그대로임
+    s2 = s2.map(item => parseInt(item));
+    // 반환값 다시 s2에 저장
+    
+    // filter와 find 차이 
+    // 배열의 요소, 인덱스, 반환값이 true 또는 false여야 함
+    s3= s2.filter((item)=> item%2 == 0);
+    // filter : 리스트 반환(다 찾아와)
+    console.log(s3);
+
+    s3 = s2.find( (item)=> item%2 == 0);
+    // find : 조건에 처음으로 맞은 애 하나만(첫번째거만)
+    console.log(s3);
+
+    // 존재유무 확인
+    s3 = s2.filter((item)=>item%2 ==13);
+    if(s3.length == 0){ // 조건에 해당하는 요소가 없으면 빈 배열을 반환
+        console.log("filter없음");
+    }
+    s3 = s2.find((item)=>item%2 ==13);
+    if(s3 == undefined){ // 조건에 해당하는 요소가 없으면 undefined
+        console.log("find없음");
+    }
+
+    //index로 찾을 때 존재하지 않으면 -1이 옴
+    idx = s2.findIndex((item)=>item%2==13);
+    console.log(idx);
+
+    // 데이터 정렬하기 : sort
+    // 배열 내 요소를 오름차순 정렬(원본 배열을 재배치시킴 : 기존 배열 값이 바뀜)
+    s2.sort((item1, item2)=> item1-item2);
+    
+    // 정수 : - 0 +
+    console.log(s2);
+    console.log(typeof s2[0]);
+
+    // map처럼 원래 데이터는 간직하고 순서가 바뀐 것을 반환받게 하고 싶다면
+    s2 = [32,58,61,1,25,43,84,17,9,13,71];
+    s3 = s2.toSorted((item1, item2)=>item1-item2);
+    console.log("원본 : ", s2);
+    console.log("정렬 : ", s3);
+
+    // 데이터 전체 합계 구하기
+    // prev : 이전값, current : 현재값
+    sum = s2.reduce((prev, current)=> prev+current);
+    console.log("합계 : ", sum);
+
+    arr= [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9],
+        [10,11,12]
+    ];
+
+    // arr은 2차원 배열
+    arr.map( (item, idx)=> {
+        // item은 1차원 배열 상태
+        item.map((item2, ii)=>{
+            item2 = item2 + 5;
+            return item2;
+        });
+        return item;
+    })
+console.log(arr);
+</script>

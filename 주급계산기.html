@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <th>이름</th>
+        <th>시간당 급여액</th>
+        <th>근무시간</th>
+        <th>계산하기</th>
+        <tbody>
+            <tr>
+            <td><input type="text" id="name"></td>
+            <td><input type="number" id="earn"></td>
+            <td><input type="number" id="time"></td>
+            <td><button type="button" onclick="money()">클릭</button></td>
+            </tr>
+            <tr>
+                <td colspan="4" id="result"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+    function money(){
+        var name = document.getElementById("name").value;
+        var earn = document.getElementById("earn").value;
+        var time = document.getElementById("time").value;
+
+        var res = earn * time ;
+
+        text = name;
+        text += "님의 주급은"
+        text += res;
+        text += "원 입니다.";
+        document.getElementById("result").innerText = text;
+    }
+</script>

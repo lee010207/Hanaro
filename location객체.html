@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="move">네이버</button>
+</body>
+</html>
+<script>
+    // javascript를 이용해 다른 페이지로 이동하고자 할 때
+    // form태그 사용
+    // location객체 : a태그 대신 사용하는 자바스크립트 객체
+    // location.href = "이동할 주소(URL)";
+    // GET방식 전송
+    window.onload = ()=>{
+        document.querySelector("#move").addEventListener("click", ()=>{
+            location.href = "https://www.naver.com";
+        });
+    }
+</script>

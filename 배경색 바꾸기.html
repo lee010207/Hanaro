@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이벤트 발생한객체의 주소가 전달됨 -> this : 이벤트가 전달된 객체 -->
+
+    <button type="button" onclick="change(this)" style="background-color: aquamarine;">배경색 바꾸기</button>
+    <button type="button" onclick="change(this)" style="background-color: rgb(254, 159, 159);">배경색 바꾸기</button>
+    <button type="button" onclick="change(this)" style="background-color: rgb(234, 188, 232);">배경색 바꾸기</button>
+</body>
+</html>
+<script>
+    function change(color){
+        let body = document.getElementsByTagName("body")[0];
+        body.style.backgroundColor = color.style.backgroundColor;
+        event.target.style.color="ff0000";
+    }
+</script>

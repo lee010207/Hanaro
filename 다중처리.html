@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 용량이 큰 파잉ㄹ을 읽거나 네트워크 등을 통해 데이터를 가져오거나 할 때
+        동시처리와 같은 효과를 가져오도록 일을 해야 함 -> 기본적으로 컴퓨터는 한번에 하나씩 처리
+
+        1. 멀티프로세싱 : 프로세스 여러개를 만들어 여러개의 프로세스가 하나의 목적으로 위해 움직임(초창기에 많이 사용)
+                문제점 - 프로세스는 서로 완전 독립이라 데이터 공유를 할 수가 없음
+                         그래서 os를 통해 데이터를 주고받아야 하는데, 이걸 IPC(Inter Process Communication)이라 함
+                         IPC - 필터, 파이프, 메일슬롯 등을 사용함
+                         리눅스 os에서 좀비프로세스 문제를 야기함
+        2. 멀티스레딩 : 하나의 프로세스를 여러개로 쪼개서 그 조각을 스레드라고 하고 여러개의 스레드가 시간을 쪼개서 cpu를 차지해
+                       마치 동시에 작업하는 듯한 상황을 만듦
+                       동일 프로세스이기 때문에 자료 교환은 쉬우나, 일정 자원을 사용 중에 쫓겨날 수 있어서 잘못된 결과가 나올 수 있음
+                       이를 동기화 문제라고 함
+        3. 비동기 방식 : 동기식 방법은 일을 순차적으로 진행함
+                        - A,B,C 세개의 일을 동기식으로 처리하면 A시작 -> A종료  B시작 -> B종료  C시작 -> C종료 형태
+                        비동기는 A를 시작하고 바로 리턴, 백그라운드에서 A작업 중 B를 시작하고 바로 리턴, 백그라운드에서 B작업 중
+                        C를 시작하고 바로 리턴, 백그라운드에서 C 작업 중
+
+                        일이 종료하는 선후는 없음
+                        각각 일이 끝나고 나면 시스템이 콜백함수를 호출해서 일이 완료했음을 알려줌
+                        보통 함수들이 매개변수로 콜백함수를 요청함
+    -->
+    <h1>콜백함수</h1>
+</body>
+</html>
+<script>
+    function myfunc(callback, x, y)
+{
+    console.log("callback start");
+    result = callback(x,y);
+    // callback이라는 변수에 전달될 함수는 두개의 매개변수를 갖고 반환값이 하나 존재해야 함
+
+    console.log("결과", result);
+    console.log("callback end");
+}
+
+// (1) 콜백함수를 따로 만들어서 전달
+function add(x,y){
+    return x+y;
+}
+myfunc(add, 5, 7);
+
+// (2) callback함수를 직접 정의
+myfunc(function(a,b){return a*b},27,63);
+
+// (3) 화살표 함수
+myfunc((a,b)=>a-b , 83,29);
+</script>
